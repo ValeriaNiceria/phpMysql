@@ -1,14 +1,12 @@
 <?php
     session_start();
-    
-    if(isset($_GET['nome']) && $_GET['nome'] != ''){
+
+    if((isset($_GET['nome']) && $_GET['nome'] != '') && (isset($_GET['telefone']) && $_GET['telefone'] != '')){
         $contato = array();
 
         $contato['nome'] = $_GET['nome'];
 
-        if(isset($_GET['telefone']) && $_GET['telefone'] != ''){
-            $contato['telefone'] = $_GET['telefone'];
-        }
+        $contato['telefone'] = $_GET['telefone'];
 
         if(isset($_GET['email'])){
             $contato['email'] = $_GET['email'];
