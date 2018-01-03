@@ -36,7 +36,7 @@
             </fieldset>
             <label>
                 Tarefa concluída:
-                <input type="checkbox" name="concluida" value="sim"/>
+                <input type="checkbox" name="concluida" value="1"/>
             </label>
             <input type="submit" value="Cadastrar"/>
         </fieldset>
@@ -67,7 +67,11 @@
                            echo traduz_prioridade($tarefa['prioridade']);
                         ?>
                     </td>
-                    <td><?php echo isset($tarefa['concluida']) ? $tarefa['concluida'] : ''; ?></td>
+                    <td>
+                        <?php 
+                            echo traduz_concluida($tarefa['concluida']);
+                        ?>
+                    </td>
                 </tr>
 
             <?php endforeach; ?>
