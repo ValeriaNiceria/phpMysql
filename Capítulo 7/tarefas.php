@@ -17,7 +17,7 @@
         }
 
         if(isset($_GET['prazo'])){
-            $tarefa['prazo'] = $_GET['prazo'];
+            $tarefa['prazo'] = traduz_data_para_banco($_GET['prazo']);
         }else{
             $tarefa['prazo'] = '';
         }
