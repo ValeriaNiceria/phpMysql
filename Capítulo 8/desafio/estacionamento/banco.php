@@ -43,3 +43,33 @@ function gravar_veiculo($conexao, $veiculo) {
     ";
     mysqli_query($conexao, $sqlGravar);
 }
+
+
+function buscar_veiculo($conexao, $id) {
+    $sqlBusca = "SELECT * FROM veiculos WHERE id = " . $id;
+
+    $resultado = mysqli_query($conexao, $sqlBusca);
+
+    return mysqli_fetch_assoc($resultado);
+}
+
+
+function editar_veiculo($conexao, $veiculo) {
+    $sqlEditar = "
+        UPDATE veiculos SET
+            placa = '{$veiculo['placa']}',
+            marca = '{$veiculo['marca']}',
+            modelo = '{$veiculo['modelo']}',
+            hora_entrada = '{$veiculo['hora_entrada']}',
+            hora_saida = '{$veiculo['hora_saida']}'
+        WHERE id = {$veiculo['id']}
+    ";
+    mysqli_query($conexao, $sqlEditar);
+}
+
+
+function remover_veiculo($conexao, $id) {
+    $sqlRemover = "DELETE FROM veiculos WHERE id = " . $id;
+
+    mysqli_query($conexao, $sqlRemover);
+}
