@@ -37,6 +37,10 @@
         }
 
         gravar_tarefa($conexao, $tarefa);
+
+        //Evitando o problema com a atualização de página
+        header('Location: tarefas.php');
+        die();
     }
     
     //Buscando dados no banco
