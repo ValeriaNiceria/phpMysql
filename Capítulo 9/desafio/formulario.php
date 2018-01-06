@@ -38,6 +38,13 @@
         </label>
         <label>
             Data de Nascimento:
+
+            <?php if ($tem_erros && isset($erros_validacao['dataNascimento'])) : ?>
+                <span class="erro">
+                    <?php echo $erros_validacao['dataNascimento']; ?>
+                </span>
+            <?php endif;?>
+
             <input type="text" name="dataNascimento" value="<?php echo traduz_data_para_exibir($contato['dataNascimento']); ?>"/>
         </label>
         <label>

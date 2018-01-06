@@ -42,11 +42,18 @@
             $contato['descricao'] = '';
         }
 
-        if (isset($_POST['dataNascimento'])) {
-            $contato['dataNascimento'] = traduz_data_para_banco($_POST['dataNascimento']);
+
+        if (isset($_POST['dataNascimento']) && strlen($_POST['dataNascimento']) > 0) {
+            if (validar_data($_POST['dataNascimento'])) {
+                $contato['dataNascimento'] = traduz_data_para_banco($_POST['dataNascimento']);
+            } else {
+                $tem_erros = true;
+                $erros_validacao['dataNascimento'] = 'A data informada não é válida!';
+            }
         } else {
             $contato['dataNascimento'] = '';
         }
+        
 
         if (isset($_POST['favorito'])) {
             $contato['favorito'] = 1;
