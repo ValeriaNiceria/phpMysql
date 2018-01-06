@@ -37,12 +37,16 @@
                         ?>
                     </td>
                     <td> <!--O campo com os links para editar e remover-->
-                        <a href="editar.php?id=<?php echo $tarefa['id']; ?>">
+                        <a href="editar.php?id=<?php echo $tarefa['id']; ?>" class="btn">
                             Editar    
                         </a>
 
-                        <a href="remover.php?id=<?php echo $tarefa['id']; ?>">
+                        <a href="remover.php?id=<?php echo $tarefa['id']; ?>" class="btn">
                             Remover
+                        </a>
+
+                        <a href="duplicar.php?id=<?php echo $tarefa['id']; ?>" class="btn">
+                            Duplicar tarefa
                         </a>
                     </td>
                 </tr>

@@ -76,3 +76,4 @@ function remover_tarefa($conexao, $id) {
     mysqli_query($conexao, $sqlRemover);
 
 }
+

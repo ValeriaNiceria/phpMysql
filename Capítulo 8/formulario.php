@@ -43,7 +43,7 @@
        
        <?php
             if(!$exibir_tabela){ 
-                echo '<a href="cancela.php" class="cancela">Cancelar Edição</a>';
+                echo '<a href="cancela.php" class="btn">Cancelar Edição</a>';
             }
        ?>
 
