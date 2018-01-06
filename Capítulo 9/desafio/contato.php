@@ -20,10 +20,14 @@
             $erros_validacao['nome'] = 'O nome do contato é obrigatório!';
         }
 
-        if (isset($_POST['telefone'])) {
-            $contato['telefone'] = $_POST['telefone'];
-        } else {
-            $contato['telefone'] = '';
+        
+        if (isset($_POST['telefone']) && strlen($_POST['telefone']) > 0) {
+            if (validar_telefone($_POST['telefone'])) {
+                $contato['telefone'] = $_POST['telefone'];
+            } else {
+                $tem_erros = true;
+                $erros_validacao['telefone'] = 'O telefone de contato não é válido!';
+            }
         }
 
         if (isset($_POST['email'])) {
@@ -66,12 +70,12 @@
 
     $contato = array(
         'id' => 0,
-        'nome' => '',
-        'telefone' => '',
-        'email' => '',
-        'descricao' => '',
-        'dataNascimento' => '',
-        'favorito' => ''
+        'nome' => (isset($_POST['nome'])) ? $_POST['nome'] : '',
+        'telefone' => (isset($_POST['telefone'])) ? $_POST['telefone'] : '',
+        'email' => (isset($_POST['email'])) ? $_POST['email'] : '',
+        'descricao' => (isset($_POST['descricao'])) ? $_POST['descricao'] : '',
+        'dataNascimento' => (isset($_POST['dataNascimento'])) ? $_POST['dataNascimento'] : '',
+        'favorito' => (isset($_POST['favorito'])) ? $_POST['favorito'] : ''
     );
 
     include "template.php";

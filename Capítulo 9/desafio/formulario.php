@@ -17,6 +17,13 @@
         </label>
         <label>
             Telefone:
+
+            <?php if ($tem_erros && isset($erros_validacao['telefone'])) :?>
+                <span class="erro">
+                    <?php echo $erros_validacao['telefone']; ?>
+                </span>
+            <?php endif; ?>
+
             <input type="text" name="telefone" value="<?php echo $contato['telefone']; ?>"/> 
         </label>
         <label>

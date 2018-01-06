@@ -40,3 +40,12 @@ function tem_post() {
     }
     return false;
 }
+
+
+function validar_telefone($telefone) {
+    $padrao = '/^\([0-9]{2}\)[0-9]{4}\-[0-9]{4}$/';
+
+    $resultado = preg_match($padrao, $telefone);
+
+    return $resultado;
+}
