@@ -30,8 +30,13 @@ if (tem_post()) { //Validando o nome da tarefa
         $tarefa['descricao'] = '';
     }
 
-    if (isset($_POST['prazo'])) {
-        $tarefa['prazo'] = traduz_data_para_banco($_POST['prazo']);
+    if (isset($_POST['prazo']) && strlen($_POST['prazo']) > 0) {
+        if (validar_data($_POST['prazo'])) {
+            $tarefa['prazo'] = traduz_data_para_banco($_POST['prazo']);
+        } else {
+            $tem_erros = true;
+            $erros_validacao['prazo'] = 'O prazo não é uma data válida!';
+        }
     } else {
         $tarefa['prazo'] = '';
     }
@@ -45,12 +50,20 @@ if (tem_post()) { //Validando o nome da tarefa
     }
     
 
-    editar_tarefa($conexao, $tarefa);
-
-    header('Location: tarefas.php');
-    die();
+    if (! $tem_erros) {
+        editar_tarefa($conexao, $tarefa);
+        
+        header('Location: tarefas.php');
+        die();
+    }
 }
 
-    $tarefa = buscar_tarefa($conexao, $_POST['id']);
+    $tarefa = buscar_tarefa($conexao, $_GET['id']);
+
+    $tarefa['nome'] = (isset($_POST['nome'])) ? $_POST['nome'] : $tarefa['nome'];
+    $tarefa['descricao'] = (isset($_POST['descricao'])) ? $_POST['descricao'] : $tarefa['descricao'];
+    $tarefa['prazo'] = (isset($_POST['prazo'])) ? $_POST['prazo'] : $tarefa['prazo'];
+    $tarefa['prioridade'] = (isset($_POST['prioridade'])) ? $_POST['prioridade'] : $tarefa['prioridade'];
+    $tarefa['concluida'] = (isset($_POST['concluida'])) ? $_POST['concluida'] : $tarefa['concluida'];
 
     include "template.php";
