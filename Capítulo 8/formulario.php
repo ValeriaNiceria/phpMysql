@@ -40,6 +40,13 @@
             : '';
             ?> />
         </label>
+       
+       <?php
+            if(!$exibir_tabela){ 
+                echo '<a href="cancela.php" class="cancela">Cancelar Edição</a>';
+            }
+       ?>
+
         <input type="submit" value="<?php echo ($tarefa['id'] > 0) ? 'Atualizar' : 'Cadastrar'; ?>"/>
     </fieldset>
 </form

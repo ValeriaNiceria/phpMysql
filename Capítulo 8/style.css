@@ -49,3 +49,12 @@ table td {
     color: #000;
     text-align: center;
 }
+
+.cancela {
+    color: #fff;
+    float: right;
+    text-decoration: none;
+    background-color: rgb(49, 81, 163);
+    padding: 4px;
+    margin: 3px;
+}
