@@ -24,6 +24,10 @@ function traduz_data_para_banco($data) {
 
     $dados = explode("/", $data);
 
+    if (count($dados) != 3) {
+        return $data;
+    }
+
     $data_mysql = "{$dados[2]}-{$dados[1]}-{$dados[0]}";
 
     return $data_mysql;
@@ -36,6 +40,10 @@ function traduz_data_para_exibir($data) {
     }
 
     $dados = explode("-",$data);
+
+    if (count($dados) != 3) {
+        return false;
+    }
 
     $data_exibir = "{$dados[2]}/{$dados[1]}/{$dados[0]}";
 
@@ -57,4 +65,25 @@ function tem_post() { //Validando o nome da tarefa
         return true;
     } 
     return false;
+}
+
+
+function validar_data($data) { //Validando a data digitada
+    $padrao = '/^[0-9]{1,2}\/[0-9]{1,2}\/[0-9]{4}$/'; //Expressão regular
+
+    $resultado = preg_match($padrao, $data);
+
+    if(! $resultado) {
+        return false;
+    }
+
+    $dados = explode('/', $data);
+
+    $dia = $dados[0];
+    $mes = $dados[1];
+    $ano = $dados[2];
+
+    $resultado = checkdate($mes, $dia, $ano);
+
+    return $resultado;
 }
