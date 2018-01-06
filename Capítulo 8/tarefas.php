@@ -7,34 +7,8 @@
     $exibir_tabela = true;
 
     if(isset($_GET['nome']) && $_GET['nome'] != ''){
-        $tarefa = array();
-
-        $tarefa['nome'] = $_GET['nome'];
-
-
-        if(isset($_GET['descricao'])){
-            $tarefa['descricao'] = $_GET['descricao'];
-        }else{
-            $tarefa['descricao'] = '';
-        }
-
-        if(isset($_GET['prazo'])){
-            $tarefa['prazo'] = traduz_data_para_banco($_GET['prazo']);
-        }else{
-            $tarefa['prazo'] = '';
-        }
-
-        if(isset($_GET['prioridade'])){
-            $tarefa['prioridade'] = $_GET['prioridade'];
-        }else{
-            $tarefa['prioridade'] = '';
-        }
-
-        if(isset($_GET['concluida'])){
-            $tarefa['concluida'] = 1;
-        }else{
-            $tarefa['concluida'] = 0;
-        }
+       
+        include "baseTarefasBanco.php";
 
         gravar_tarefa($conexao, $tarefa);
 
