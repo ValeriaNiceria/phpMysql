@@ -23,10 +23,13 @@
             $erros_validacao['nome'] = 'O nome do contato é obrigatório!';
         }
 
-        if (isset($_POST['telefone'])) {
-            $contato['telefone'] = $_POST['telefone'];
-        } else {
-            $contato['telefone'] = '';
+        if (isset($_POST['telefone']) && strlen($_POST['telefone']) > 0) {
+            if (validar_telefone($_POST['telefone'])) {
+                $contato['telefone'] = $_POST['telefone'];
+            } else {
+                $tem_erros = true;
+                $erros_validacao['telefone'] = 'O telefone de contato não é válido!';
+            }
         }
 
         if (isset($_POST['email'])) {
