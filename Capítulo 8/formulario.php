@@ -47,6 +47,10 @@
             }
        ?>
 
+       <?php
+            echo '<a href="apagarConcluida.php" class="btn_apagar">Apagar tarefas concluídas</a>';
+       ?> 
+
         <input type="submit" value="<?php echo ($tarefa['id'] > 0) ? 'Atualizar' : 'Cadastrar'; ?>"/>
     </fieldset>
 </form

@@ -77,3 +77,9 @@ function remover_tarefa($conexao, $id) {
 
 }
 
+
+function apagar_concluida($conexao) {
+    $sqlApaga = "DELETE FROM tarefas WHERE concluida = 1";
+
+    mysqli_query($conexao, $sqlApaga);
+}

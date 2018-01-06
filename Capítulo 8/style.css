@@ -58,3 +58,12 @@ table td {
     padding: 4px;
     margin: 3px;
 }
+
+.btn_apagar {
+    color: #fff;
+    float: left;
+    text-decoration: none;
+    background-color: rgb(49, 81, 163);
+    padding: 5px;
+    margin:4px;
+}
