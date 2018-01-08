@@ -19,7 +19,12 @@
             <?php foreach($lista_tarefas as $tarefa) : ?>
             
                 <tr>
-                    <td><?php echo isset($tarefa['nome']) ? $tarefa['nome'] : ''; ?></td>
+                    <td>
+                        <a href="tarefa.php?id=<?php echo $tarefa['id']; ?>">
+                            <?php echo isset($tarefa['nome']) ? $tarefa['nome'] : ''; ?>
+                        </a>
+
+                    </td>
                     <td><?php echo isset($tarefa['descricao']) ? $tarefa['descricao'] : ''; ?></td>
                     <td>
                         <?php 
