@@ -12,7 +12,11 @@
         <?php if(isset($lista_contatos) && is_array($lista_contatos) && sizeof($lista_contatos) > 0) : ?>
             <?php foreach($lista_contatos as $contato) : ?>
                 <tr>
-                    <td><?php echo isset($contato['nome']) ? $contato['nome'] : ''; ?></td>
+                    <td>
+                        <a href="contato.php?id=<?php echo $contato['id']; ?>">
+                            <?php echo isset($contato['nome']) ? $contato['nome'] : ''; ?>
+                        </a>
+                    </td>
                     <td><?php echo isset($contato['telefone']) ? $contato['telefone'] : ''; ?></td>
                     <td><?php echo isset($contato['email']) ? $contato['email'] : ''; ?></td>
                     <td><?php echo isset($contato['descricao']) ? $contato['descricao'] : '' ?></td>
