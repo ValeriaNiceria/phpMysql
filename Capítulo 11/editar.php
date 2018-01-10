@@ -2,6 +2,7 @@
 
 session_start();
 
+include "config.php";
 include "banco.php";
 include "ajudantes.php";
 
