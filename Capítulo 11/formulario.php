@@ -56,6 +56,11 @@
             : '';
             ?> />
         </label>
+
+        <label>
+            Lembrete por e-mail:
+            <input type="checkbox" name="lembrete" value="1"/>
+        </label>
        
        <?php
             if(!$exibir_tabela){ 

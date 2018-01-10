@@ -53,6 +53,10 @@
 
         if (! $tem_erros) {
             gravar_tarefa($conexao, $tarefa);
+
+            if (isset($_POST['lembrete']) && $_POST['lembrete'] == '1') {
+                enviar_email($tarefa);
+            }
             
             //Evitando o problema com a atualização de página
             header('Location: tarefas.php');
