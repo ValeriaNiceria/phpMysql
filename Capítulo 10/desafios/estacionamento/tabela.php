@@ -11,7 +11,11 @@
     <?php if(isset($lista_veiculos) && is_array($lista_veiculos) && sizeof($lista_veiculos) > 0) : ?>
          <?php foreach($lista_veiculos as $veiculo) : ?>
          <tr>
-             <td><?php echo isset($veiculo['placa']) ? $veiculo['placa'] : ''; ?></td>
+             <td>
+                <a href="veiculo.php?id=<?php echo $veiculo['id']; ?>">
+                    <?php echo isset($veiculo['placa']) ? $veiculo['placa'] : ''; ?>
+                </a>
+             </td>
              <td><?php echo isset($veiculo['marca']) ? $veiculo['marca'] : ''; ?></td>
              <td><?php echo isset($veiculo['modelo']) ? $veiculo['modelo'] : ''; ?></td>
              <td><?php echo isset($veiculo['hora_entrada']) ? $veiculo['hora_entrada'] : ''; ?></td>
