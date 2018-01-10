@@ -76,3 +76,32 @@
 
         mysqli_query($conexao, $sqlRemover);
     }
+
+    
+    function gravar_anexo($conexao, $anexo) {
+        $sqlGravar = "
+            INSERT INTO anexo
+            (contato_id, nome, arquivo)
+            VALUES(
+                {$anexo['contato_id']},
+                '{$anexo['nome']}',
+                '{$anexo['arquivo']}'
+            )
+        ";
+        mysqli_query($conexao, $sqlGravar);
+    }
+
+
+    function buscar_anexos($conexao, $contato_id) {
+        $sql = "SELECT * FROM anexo WHERE contato_id = {$contato_id}";
+
+        $resultado = mysqli_query($conexao, $sql);
+
+        $anexos = array();
+
+        while ($anexo = mysqli_fetch_assoc($resultado)) {
+            $anexos[] = $anexo;
+        }
+
+        return $anexos;
+    }
