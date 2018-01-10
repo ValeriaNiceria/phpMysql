@@ -41,4 +41,6 @@ if(tem_post()) {
 
 $veiculo = buscar_veiculo($conexao, $_GET['id']);
 
+$anexos = buscar_anexos($conexao, $_GET['id']);
+
 include "template_veiculo.php";

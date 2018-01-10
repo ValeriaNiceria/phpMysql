@@ -39,3 +39,10 @@ function tratar_anexo($anexo) {
 
     return false;
 }
+
+function traduz_tipo($tipo) {
+    if ($tipo == 0) {
+        return "Entrada";
+    }
+    return "Saída";
+}

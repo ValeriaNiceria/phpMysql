@@ -88,3 +88,18 @@ function gravar_anexo($conexao, $anexo) {
     ";
     mysqli_query($conexao, $sqlGravar);
 }
+
+
+function buscar_anexos($conexao, $veiculo_id) {
+    $sql = "SELECT * FROM anexos WHERE veiculo_id = {$veiculo_id}";
+
+    $resultado = mysqli_query($conexao, $sql);
+
+    $anexos = array();
+
+    while ($anexo = mysqli_fetch_assoc($resultado)) {
+        $anexos[] = $anexo;
+    }
+
+    return $anexos;
+}

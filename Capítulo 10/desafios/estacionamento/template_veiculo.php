@@ -33,6 +33,39 @@
         <?php echo $veiculo['hora_saida']; ?>
     </p>
 
+    <h2>Fotos</h2>
+    <!--Lista de anexos -->
+    <?php if(count($anexos) > 0) : ?>
+        <table>
+            <tr>
+                <th>Foto</th>
+                <th>Horário</th>
+                <th>Opções</th>
+            </tr>
+
+            <?php foreach ($anexos as $anexo) : ?>
+                <tr>
+                    <td>
+                        <img class="img_table" src="anexos/<?php echo $anexo['arquivo']; ?>"/>
+                    </td>
+
+                    <td>
+                        <?php echo traduz_tipo($anexo['tipo']); ?>
+                    </td>
+
+                    <td>
+                        <a href="anexos/<?php echo $anexo['arquivo']; ?>">
+                            Download
+                        </a>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </table>
+        <?php else : ?>
+            <p>Não há anexos para este veículo.</p>
+    <?php endif; ?>
+
+
     <!-- Formulário para um novo anexo -->
     <form method="POST" enctype="multipart/form-data">
         <fieldset>
