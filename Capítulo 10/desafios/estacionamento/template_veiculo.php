@@ -43,7 +43,7 @@
             <label>
 
                 <?php if ($tem_erros && isset($erros_validacao['anexo'])) : ?>
-                    <span class="erros">
+                    <span class="erro">
                         <?php echo $erros_validacao['anexo']; ?>
                     </span>
                 <?php endif; ?>
