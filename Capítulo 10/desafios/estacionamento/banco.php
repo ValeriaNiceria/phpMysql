@@ -73,3 +73,18 @@ function remover_veiculo($conexao, $id) {
 
     mysqli_query($conexao, $sqlRemover);
 }
+
+
+function gravar_anexo($conexao, $anexo) {
+    $sqlGravar = "
+    INSERT INTO anexos
+        (veiculo_id, nome, arquivo, tipo)
+    VALUES(
+        {$anexo['veiculo_id']},
+        '{$anexo['nome']}',
+        '{$anexo['arquivo']}',
+        '{$anexo['tipo']}'
+    )
+    ";
+    mysqli_query($conexao, $sqlGravar);
+}

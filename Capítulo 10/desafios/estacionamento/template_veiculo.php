@@ -32,5 +32,39 @@
         <strong>Hora saída:</strong>
         <?php echo $veiculo['hora_saida']; ?>
     </p>
+
+    <!-- Formulário para um novo anexo -->
+    <form method="POST" enctype="multipart/form-data">
+        <fieldset>
+            <legend>Novo anexo</legend>
+
+            <input type="hidden" name="veiculo_id" value="<?php echo $veiculo['id']; ?>"/>
+
+            <label>
+
+                <?php if ($tem_erros && isset($erros_validacao['anexo'])) : ?>
+                    <span class="erros">
+                        <?php echo $erros_validacao['anexo']; ?>
+                    </span>
+                <?php endif; ?>
+
+                <input type="file" name="anexo" />
+
+            </label>
+
+            <label>
+                Horário:
+
+                <input type="radio" name="tipo" value="0" checked/>
+                Entrada
+
+                <input type="radio" name="tipo" value="1" />
+                Saída
+            </label>
+
+            <input type="submit" value="Cadastrar" />
+
+        </fieldset>
+    </form>
 </body>
 </html>
