@@ -2,8 +2,11 @@
 
 include "config.php";
 include "banco.php";
+include "classes/Tarefas.php";
 
-apagar_concluida($conexao);
+$tarefa = new Tarefas($conexao);
+
+$tarefa->apagar_concluida();
 
 header('Location: tarefas.php');
 die();

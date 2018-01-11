@@ -98,6 +98,23 @@ class Tarefas
             $this->anexos[] = $anexo;
         }
     }
+
+
+    public function remover_tarefa($id) 
+    {
+        $sqlRemover = "
+            DELETE FROM tarefas WHERE id = {$id};
+        ";
+        
+        mysqli_query($this->conexao, $sqlRemover);
+        
+    }        
     
+
+    public function apagar_concluida() {
+        $sqlApaga = "DELETE FROM tarefas WHERE concluida = 1";
+    
+        mysqli_query($this->conexao, $sqlApaga);
+    }
 
 }
