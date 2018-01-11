@@ -8,39 +8,6 @@ if (mysqli_connect_errno($conexao)) {
 } 
 
 
-function gravar_tarefa($conexao, $tarefa) {
-    $sqlGravar = "
-        INSERT INTO tarefas (nome, descricao, prioridade, prazo, concluida)
-        VALUES
-        (   
-            '{$tarefa['nome']}',
-            '{$tarefa['descricao']}',
-            '{$tarefa['prioridade']}',
-            '{$tarefa['prazo']}',
-            '{$tarefa['concluida']}'
-        )
-    ";
-    mysqli_query($conexao, $sqlGravar);
-}
-
-
-
-
-function editar_tarefa($conexao, $tarefa) {
-    $sqlEditar = "
-        UPDATE tarefas SET
-            nome = '{$tarefa['nome']}',
-            descricao = '{$tarefa['descricao']}',
-            prioridade = '{$tarefa['prioridade']}',
-            prazo = '{$tarefa['prazo']}',
-            concluida = '{$tarefa['concluida']}'
-        WHERE id = {$tarefa['id']}
-    ";
-
-    mysqli_query($conexao, $sqlEditar);
-}
-
-
 function remover_tarefa($conexao, $id) {
 
     $sqlRemover = "

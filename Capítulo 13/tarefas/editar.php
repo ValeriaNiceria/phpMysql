@@ -55,7 +55,7 @@ if (tem_post()) { //Validando o nome da tarefa
     
 
     if (! $tem_erros) {
-        editar_tarefa($conexao, $tarefa);
+        $tarefas->editar_tarefa($tarefa);
 
         if (isset($_POST['lembrete']) && $_POST['lembrete'] == '1') {
 

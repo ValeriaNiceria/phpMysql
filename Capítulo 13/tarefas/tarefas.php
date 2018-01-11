@@ -55,7 +55,7 @@
         }
 
         if (! $tem_erros) {
-            gravar_tarefa($conexao, $tarefa);
+            $tarefas->gravar_tarefa($tarefa);
 
             if (isset($_POST['lembrete']) && $_POST['lembrete'] == '1') {
                 enviar_email($tarefa);

@@ -37,4 +37,37 @@ class Tarefas
         $this->tarefa = mysqli_fetch_assoc($resultado);
     }
 
+
+    public function gravar_tarefa($tarefa) 
+    {
+        $sqlGravar = "
+            INSERT INTO tarefas (nome, descricao, prioridade, prazo, concluida)
+            VALUES
+            (   
+                '{$tarefa['nome']}',
+                '{$tarefa['descricao']}',
+                '{$tarefa['prioridade']}',
+                '{$tarefa['prazo']}',
+                '{$tarefa['concluida']}'
+            )
+        ";
+        mysqli_query($this->conexao, $sqlGravar);
+    }
+    
+
+    public function editar_tarefa($tarefa) {
+        $sqlEditar = "
+            UPDATE tarefas SET
+                nome = '{$tarefa['nome']}',
+                descricao = '{$tarefa['descricao']}',
+                prioridade = '{$tarefa['prioridade']}',
+                prazo = '{$tarefa['prazo']}',
+                concluida = '{$tarefa['concluida']}'
+            WHERE id = {$tarefa['id']}
+        ";
+    
+        mysqli_query($this->conexao, $sqlEditar);
+    }
+    
+
 }
