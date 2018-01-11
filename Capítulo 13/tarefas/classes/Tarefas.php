@@ -5,6 +5,8 @@ class Tarefas
     public $conexao;
     public $tarefas = array();
     public $tarefa;
+    public $anexos = array();
+    public $anexo;
 
     public function __construct($nova_conexao)
     {
@@ -67,6 +69,34 @@ class Tarefas
         ";
     
         mysqli_query($this->conexao, $sqlEditar);
+    }
+
+
+    public function gravar_anexo($anexo)
+    {
+        $sqlGravar = "
+            INSERT INTO anexos
+            (tarefa_id, nome, arquivo)
+            VALUES(
+                '{$anexo['tarefa_id']}',
+                '{$anexo['nome']}',
+                '{$anexo['arquivo']}'
+            )
+        ";
+    
+        mysqli_query($this->conexao, $sqlGravar);
+    }
+
+
+    public function buscar_anexos($tarefa_id) {
+        $sql = "SELECT * FROM anexos WHERE tarefa_id = {$tarefa_id}";
+        $resultado = mysqli_query($this->conexao, $sql);
+    
+        $this->anexos = array();
+    
+        while ($anexo = mysqli_fetch_assoc($resultado)) {
+            $this->anexos[] = $anexo;
+        }
     }
     
 

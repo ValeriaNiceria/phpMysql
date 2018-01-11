@@ -33,14 +33,14 @@
 
     <h2>Anexos</h2>
     <!--lista de anexos-->
-        <?php if (count($anexos)) : ?>
+        <?php if (count($tarefas->anexos)) : ?>
             <table>
                 <tr>
                     <th>Arquivo</th>
                     <th>Opções</th>
                 </tr>
 
-            <?php foreach ($anexos as $anexo) : ?>
+            <?php foreach ($tarefas->anexos as $anexo) : ?>
                 <tr>
                     <td>
                         <?php echo $anexo['nome']; ?>
@@ -64,7 +64,7 @@
         <fieldset>
             <legend>Novo anexo</legend>
 
-            <input type="hidden" name="tarefa_id" value="<?php echo $tarefa['id']; ?>" />
+            <input type="hidden" name="tarefa_id" value="<?php echo $tarefas->tarefa['id']; ?>" />
 
             <label>
                 <?php if ($tem_erros && isset($erros_validacao['anexo'])) : ?>
