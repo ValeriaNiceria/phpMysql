@@ -21,7 +21,7 @@
 </p>
 
 
-<?php if (count($anexo) > 0) : ?>
+<?php if (count($anexos) > 0) : ?>
     <p>
         <strong>Atenção! </strong>
         Esta tarefa contém anexos!

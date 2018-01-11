@@ -105,15 +105,42 @@ function tratar_anexo($anexo) {
 
 
 function enviar_email($tarefa, $anexos = array()) {
+
+    //Incluindo o PHPMailer
+    include "bibliotecas/PHPMailer/PHPMailerAutoload.php";
+
+    $corpo = preparar_corpo_email($tarefa, $anexos);
+
     //Acessar o sistema de e-mails;
     //Fazer a autenticação com usuário e senha;
     //Usar a opção para escrever um e-mail;
+    $email = new PHPMailer(); //Esta é a criação do objeto
+
+    $email->isSMTP();
+    $email->Host = "smtp.gmail.com";
+    $email->Port = 587;
+    $email->SMTPSecure = 'tls';
+    $email->SMTPAuth = true;
+    $email->Username = "meuemail@gmail.com";
+    $email->Password = "minhasenha";
+    $email->setFrom("meuemail@gmail.com", "Avisador de Tarefas");
+
     //Digitar o e-mail do destinatário;
+    $email->addAddress(EMAIL_NOTIFICACAO);
+
     //Digitar o assunto do e-mail;
+    $email->Subject = "Aviso de tarefa: {$tarefa['nome']}";
+
     //Escrever o corpo do e-mail;
-    $corpo = preparar_corpo_email($tarefa, $anexos);
+    $email->msgHTML($corpo);
+    
     //Adicionar os anexos quando necessário;
+    foreach ($anexos as $anexo) {
+        $email->addAttachment("anexos/{$anexo['arquivo']}");
+    }
+
     //Usar a opção de enviar o e-mail.
+    $email->send();
 }
 
 
