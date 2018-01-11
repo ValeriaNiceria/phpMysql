@@ -11,7 +11,7 @@ class Tarefas
     }
 
 
-    public function buscar_tarefas($conexao) 
+    public function buscar_tarefas() 
     {
         $sqlBusca = 'SELECT * FROM tarefas';
 
@@ -21,8 +21,9 @@ class Tarefas
 
         while ($tarefa = mysqli_fetch_assoc($resultado)) 
         {
-            $tarefas[] = $tarefa;
+            $this->tarefas[] = $tarefa;
         }
+
     }
 
 }

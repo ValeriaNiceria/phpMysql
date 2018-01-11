@@ -15,8 +15,8 @@
             <th>Opções</th> <!--A nova coluna Opções-->
         </tr>
 
-        <?php if(isset($lista_tarefas) && is_array($lista_tarefas) && sizeof($lista_tarefas) > 0) : ?>
-            <?php foreach($lista_tarefas as $tarefa) : ?>
+        <?php if(isset($tarefas->tarefas) && is_array($tarefas->tarefas) && sizeof($tarefas->tarefas) > 0) : ?>
+            <?php foreach($tarefas->tarefas as $tarefa) : ?>
             
                 <tr>
                     <td>

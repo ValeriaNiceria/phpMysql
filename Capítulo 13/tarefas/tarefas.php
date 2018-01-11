@@ -4,6 +4,9 @@
     include "config.php";
     include "banco.php";
     include "ajudantes.php";
+    include "classes/Tarefas.php";
+
+    $tarefas = new Tarefas($conexao);
 
     $exibir_tabela = true;
 
@@ -65,7 +68,7 @@
     }
     
     //Buscando dados no banco
-    $lista_tarefas = buscar_tarefas($conexao);
+    $tarefas->buscar_tarefas();
 
     //Verifica se existem dados enviados através do POST para que sejam usados no lugar dos valores em banco
     $tarefa = array(
