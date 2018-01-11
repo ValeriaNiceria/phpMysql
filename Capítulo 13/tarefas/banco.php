@@ -24,13 +24,6 @@ function gravar_tarefa($conexao, $tarefa) {
 }
 
 
-function buscar_tarefa($conexao, $id) {
-    $sqlBusca = 'SELECT * FROM tarefas WHERE id = ' . $id;
-
-    $resultado = mysqli_query($conexao, $sqlBusca);
-
-    return mysqli_fetch_assoc($resultado);
-}
 
 
 function editar_tarefa($conexao, $tarefa) {
