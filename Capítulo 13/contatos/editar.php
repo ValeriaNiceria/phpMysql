@@ -5,6 +5,9 @@
     include "config.php";
     include "banco.php";
     include "ajudantes.php";
+    include "classes/Contatos.php";
+
+    $contatos = new Contatos($mysqli);
 
     $exibir_tabela = false;
 
@@ -71,7 +74,8 @@
         }
     }
 
-    $contato = buscar_contato($mysqli, $_GET['id']);
+    $contatos->buscar_contato($_GET['id']);
+    $contato = $contatos->contato;
 
     $contato['nome'] = (isset($_POST['nome'])) ? $_POST['nome'] : $contato['nome'];
     $contato['telefone'] = (isset($_POST['telefone'])) ? $_POST['telefone'] : $contato['telefone'];

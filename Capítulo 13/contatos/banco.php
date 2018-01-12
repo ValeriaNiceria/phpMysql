@@ -26,15 +26,6 @@
     }
 
 
-    function buscar_contato($conexao, $id) {
-        $sqlBusca = "SELECT * FROM contatos WHERE id = " . $id;
-
-        $resultado = mysqli_query($conexao, $sqlBusca);
-
-        return mysqli_fetch_assoc($resultado);
-    }
-
-
     function editar_contato($conexao, $contato) {
         $sqlEditar = " 
             UPDATE contatos SET

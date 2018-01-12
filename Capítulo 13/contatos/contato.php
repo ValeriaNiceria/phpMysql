@@ -3,6 +3,9 @@
 include "config.php";
 include "banco.php";
 include "ajudantes.php";
+include "classes/Contatos.php";
+
+$contatos = new Contatos($mysqli);
 
 $tem_erros = false;
 $erros_validacao = array();
@@ -34,7 +37,8 @@ if (tem_post()) {
     }
 }
 
-$contato = buscar_contato($mysqli, $_GET['id']);
+$contatos->buscar_contato($_GET['id']);
+$contato = $contatos->contato;
 $anexos = buscar_anexos($mysqli, $_GET['id']);
 
 

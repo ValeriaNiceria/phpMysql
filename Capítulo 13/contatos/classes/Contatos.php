@@ -4,6 +4,7 @@ class Contatos
 {
     public $mysqli;
     public $contatos = array();
+    public $contato;
 
     public function __construct($nova_conexao)
     {
@@ -20,5 +21,14 @@ class Contatos
         while ($contato = mysqli_fetch_assoc($resultado)) {
             $this->contatos[] = $contato;
         }
+    }
+
+    public function buscar_contato($id) 
+    {
+        $sqlBusca = "SELECT * FROM contatos WHERE id = " . $id;
+
+        $resultado = $this->mysqli->query($sqlBusca);
+
+        $this->contato = mysqli_fetch_assoc($resultado);
     }
 }
