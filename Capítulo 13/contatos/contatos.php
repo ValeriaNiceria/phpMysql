@@ -4,6 +4,9 @@
     include "config.php";
     include "banco.php";
     include "ajudantes.php";
+    include "classes/Contatos.php";
+
+    $contatos = new Contatos($mysqli);
 
     $exibir_tabela = true;
 
@@ -71,7 +74,7 @@
 
     }
 
-    $lista_contatos = buscar_contatos($mysqli);
+    $contatos->buscar_contatos();
 
 
     //Limpando os campos do formulario

@@ -9,8 +9,8 @@
             <th>Opções</th>
         </tr>
 
-        <?php if(isset($lista_contatos) && is_array($lista_contatos) && sizeof($lista_contatos) > 0) : ?>
-            <?php foreach($lista_contatos as $contato) : ?>
+        <?php if(isset($contatos->contatos) && is_array($contatos->contatos) && sizeof($contatos->contatos) > 0) : ?>
+            <?php foreach($contatos->contatos as $contato) : ?>
                 <tr>
                     <td>
                         <a href="contato.php?id=<?php echo $contato['id']; ?>">

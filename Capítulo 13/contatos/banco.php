@@ -8,22 +8,6 @@
     }
 
 
-    function buscar_contatos($conexao){
-        $sqlBusca = 'SELECT * FROM contatos';
-
-        $resultado = mysqli_query($conexao, $sqlBusca);
-
-        $contatos = array();
-
-        while ($contato = mysqli_fetch_assoc($resultado)) {
-            $contatos[] = $contato;
-        }
-
-        return $contatos;
-    }
-
-
-
     function gravar_contato($conexao, $contato) {
         $sqlGravar = "
             INSERT INTO contatos
