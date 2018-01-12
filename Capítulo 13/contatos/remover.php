@@ -3,6 +3,6 @@
 include "config.php";
 include "banco.php";
 
-remover_contato($conexao, $_GET['id']);
+remover_contato($mysqli, $_GET['id']);
 
 header('Location: contatos.php');

@@ -64,14 +64,14 @@
 
 
         if (! $tem_erros) {
-            editar_contato($conexao, $contato);
+            editar_contato($mysqli, $contato);
             
             header('Location: contatos.php');
             die();
         }
     }
 
-    $contato = buscar_contato($conexao, $_GET['id']);
+    $contato = buscar_contato($mysqli, $_GET['id']);
 
     $contato['nome'] = (isset($_POST['nome'])) ? $_POST['nome'] : $contato['nome'];
     $contato['telefone'] = (isset($_POST['telefone'])) ? $_POST['telefone'] : $contato['telefone'];

@@ -63,7 +63,7 @@
         } 
 
         if(! $tem_erros) {
-            gravar_contato($conexao, $contato);
+            gravar_contato($mysqli, $contato);
             
             header('Location: contatos.php');
             die();
@@ -71,7 +71,7 @@
 
     }
 
-    $lista_contatos = buscar_contatos($conexao);
+    $lista_contatos = buscar_contatos($mysqli);
 
 
     //Limpando os campos do formulario

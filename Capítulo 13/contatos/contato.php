@@ -30,12 +30,12 @@ if (tem_post()) {
     }
 
     if (!$tem_erros) {
-        gravar_anexo($conexao, $anexo);
+        gravar_anexo($mysqli, $anexo);
     }
 }
 
-$contato = buscar_contato($conexao, $_GET['id']);
-$anexos = buscar_anexos($conexao, $_GET['id']);
+$contato = buscar_contato($mysqli, $_GET['id']);
+$anexos = buscar_anexos($mysqli, $_GET['id']);
 
 
 include "template_contato.php";
