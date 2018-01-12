@@ -2,7 +2,7 @@
 
 class Tarefas 
 {
-    public $conexao;
+    public $mysqli;
     public $tarefas = array();
     public $tarefa;
     public $anexos = array();
@@ -10,7 +10,7 @@ class Tarefas
 
     public function __construct($nova_conexao)
     {
-        $this->conexao = $nova_conexao;
+        $this->mysqli = $nova_conexao;
     }
 
 
@@ -18,7 +18,7 @@ class Tarefas
     {
         $sqlBusca = 'SELECT * FROM tarefas';
 
-        $resultado = mysqli_query($this->conexao, $sqlBusca);
+        $resultado = $this->mysqli->query($sqlBusca);
 
         $this->tarefas = array();
 
@@ -34,7 +34,7 @@ class Tarefas
     {
         $sqlBusca = 'SELECT * FROM tarefas WHERE id = ' . $id;
     
-        $resultado = mysqli_query($this->conexao, $sqlBusca);
+        $resultado = $this->mysqli->query($sqlBusca);
     
         $this->tarefa = mysqli_fetch_assoc($resultado);
     }
@@ -53,7 +53,7 @@ class Tarefas
                 '{$tarefa['concluida']}'
             )
         ";
-        mysqli_query($this->conexao, $sqlGravar);
+        $this->mysqli->query($sqlGravar);
     }
     
 
@@ -68,7 +68,7 @@ class Tarefas
             WHERE id = {$tarefa['id']}
         ";
     
-        mysqli_query($this->conexao, $sqlEditar);
+        $this->mysqli->query($sqlEditar);
     }
 
 
@@ -84,13 +84,13 @@ class Tarefas
             )
         ";
     
-        mysqli_query($this->conexao, $sqlGravar);
+        $this->mysqli->query($sqlGravar);
     }
 
 
     public function buscar_anexos($tarefa_id) {
         $sql = "SELECT * FROM anexos WHERE tarefa_id = {$tarefa_id}";
-        $resultado = mysqli_query($this->conexao, $sql);
+        $resultado = $this->mysqli->query($sql);
     
         $this->anexos = array();
     
@@ -106,7 +106,7 @@ class Tarefas
             DELETE FROM tarefas WHERE id = {$id};
         ";
         
-        mysqli_query($this->conexao, $sqlRemover);
+        $mysqli->query($sqlRemover);
         
     }        
     
@@ -114,7 +114,7 @@ class Tarefas
     public function apagar_concluida() {
         $sqlApaga = "DELETE FROM tarefas WHERE concluida = 1";
     
-        mysqli_query($this->conexao, $sqlApaga);
+        $mysqli->query($sqlApaga);
     }
 
 }

@@ -7,7 +7,7 @@ include "banco.php";
 include "ajudantes.php";
 include "classes/Tarefas.php";
 
-$tarefas = new Tarefas($conexao);
+$tarefas = new Tarefas($mysqli);
 
 $exibir_tabela = false;
 

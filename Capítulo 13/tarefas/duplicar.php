@@ -2,10 +2,14 @@
 
 include "config.php";
 include "banco.php";
+include "classes/Tarefas.php";
 
-$tarefa = buscar_tarefa($conexao, $_GET['id']);
+$tarefa = new Tarefas($mysqli);
 
-gravar_tarefa($conexao, $tarefa);
+$tarefa->buscar_tarefa($_GET['id']);
+$tarefa = $tarefa->tarefa; 
+
+$tarefa->gravar_tarefa($tarefa);
 
 header('Location: tarefas.php');
 die();
