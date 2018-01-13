@@ -31,4 +31,38 @@ class Contatos
 
         $this->contato = mysqli_fetch_assoc($resultado);
     }
+
+
+    public function gravar_contato($contato) 
+    {
+        $sqlGravar = "
+            INSERT INTO contatos
+            (nome, telefone, email, descricao, dataNascimento, favorito)
+            VALUES(
+            '{$contato['nome']}',
+            '{$contato['telefone']}',
+            '{$contato['email']}',
+            '{$contato['descricao']}',
+            '{$contato['dataNascimento']}',
+            '{$contato['favorito']}'
+            )
+
+        ";
+        $this->mysqli->query($sqlGravar);
+    }
+
+
+    public function gravar_anexo($anexo) 
+    {
+        $sqlGravar = "
+            INSERT INTO anexo
+            (contato_id, nome, arquivo)
+            VALUES(
+                {$anexo['contato_id']},
+                '{$anexo['nome']}',
+                '{$anexo['arquivo']}'
+            )
+        ";
+        $this->mysqli->query($sqlGravar);
+    }
 }

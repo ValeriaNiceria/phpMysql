@@ -8,24 +8,6 @@
     }
 
 
-    function gravar_contato($conexao, $contato) {
-        $sqlGravar = "
-            INSERT INTO contatos
-            (nome, telefone, email, descricao, dataNascimento, favorito)
-            VALUES(
-            '{$contato['nome']}',
-            '{$contato['telefone']}',
-            '{$contato['email']}',
-            '{$contato['descricao']}',
-            '{$contato['dataNascimento']}',
-            '{$contato['favorito']}'
-            )
-
-        ";
-        mysqli_query($conexao, $sqlGravar);
-    }
-
-
     function editar_contato($conexao, $contato) {
         $sqlEditar = " 
             UPDATE contatos SET
@@ -45,20 +27,6 @@
         $sqlRemover = "DELETE FROM contatos WHERE id = {$id}";
 
         mysqli_query($conexao, $sqlRemover);
-    }
-
-    
-    function gravar_anexo($conexao, $anexo) {
-        $sqlGravar = "
-            INSERT INTO anexo
-            (contato_id, nome, arquivo)
-            VALUES(
-                {$anexo['contato_id']},
-                '{$anexo['nome']}',
-                '{$anexo['arquivo']}'
-            )
-        ";
-        mysqli_query($conexao, $sqlGravar);
     }
 
 

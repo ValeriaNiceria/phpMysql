@@ -66,7 +66,7 @@
         } 
 
         if(! $tem_erros) {
-            gravar_contato($mysqli, $contato);
+            $contatos->gravar_contato($contato);
             
             header('Location: contatos.php');
             die();
