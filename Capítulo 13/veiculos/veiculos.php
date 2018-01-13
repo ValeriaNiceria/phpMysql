@@ -2,8 +2,12 @@
 
     session_start();
 
+    include "config.php";
     include "banco.php";
     include "ajudantes.php";
+    include "classes/Veiculos.php";
+
+    $veiculos = new Veiculos($mysqli);
 
     $exibir_tabela = true;
 
@@ -52,7 +56,7 @@
 
         
         if (! $tem_erros) {
-            gravar_veiculo($conexao, $veiculo);
+            $veiculos->gravar_veiculo($veiculo);
             
             header('Location: veiculos.php');
             die();
@@ -60,7 +64,8 @@
 
     }
 
-    $lista_veiculos = lista_veiculos($conexao);
+    $veiculos->lista_veiculos();
+    $veiculos_lista = $veiculos->veiculos;
 
 
     $veiculo = array(

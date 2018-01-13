@@ -8,8 +8,8 @@
         <th>Opções</th>
     </tr>
 
-    <?php if(isset($lista_veiculos) && is_array($lista_veiculos) && sizeof($lista_veiculos) > 0) : ?>
-         <?php foreach($lista_veiculos as $veiculo) : ?>
+    <?php if(isset($veiculos_lista) && is_array($veiculos_lista) && sizeof($veiculos_lista) > 0) : ?>
+         <?php foreach($veiculos_lista as $veiculo) : ?>
          <tr>
              <td>
                 <a href="veiculo.php?id=<?php echo $veiculo['id']; ?>">

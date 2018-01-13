@@ -1,8 +1,12 @@
 <?php
 
+include "config.php";
 include "banco.php";
+include "classes/Veiculos.php";
 
-remover_veiculo($conexao, $_GET['id']);
+$veiculos = new Veiculos($mysqli);
+
+$veiculos->remover_veiculo($_GET['id']);
 
 header('Location: veiculos.php');
 die();

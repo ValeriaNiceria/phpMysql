@@ -1,7 +1,11 @@
 <?php
 
+include "config.php";
 include "banco.php";
 include "ajudantes.php";
+include "classes/Veiculos.php";
+
+$veiculos = new Veiculos($mysqli);
 
 $tem_erros = false;
 $erros_validacao = array();
@@ -34,13 +38,15 @@ if(tem_post()) {
     } 
 
     if (!$tem_erros) {
-        gravar_anexo($conexao, $anexo);
+        $veiculos->gravar_anexo($anexo);
     }
 
 }
 
-$veiculo = buscar_veiculo($conexao, $_GET['id']);
+$veiculos->buscar_veiculo($_GET['id']);
+$veiculo = $veiculos->veiculo;
 
-$anexos = buscar_anexos($conexao, $_GET['id']);
+$veiculos->buscar_anexos($_GET['id']);
+$anexos = $veiculos->anexos;
 
 include "template_veiculo.php";

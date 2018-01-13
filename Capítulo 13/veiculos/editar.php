@@ -2,8 +2,12 @@
 
 session_start();
 
+include "config.php";
 include "banco.php";
 include "ajudantes.php";
+include "classes/Veiculos.php";
+
+$veiculos = new Veiculos($mysqli);
 
 $exibir_tabela = false;
 
@@ -57,7 +61,8 @@ if (tem_post()) {
     }
 }
 
-$veiculo = buscar_veiculo($conexao, $_GET['id']);
+$veiculos->buscar_veiculo($_GET['id']);
+$veiculo = $veiculos->veiculo;
 
 $veiculo['placa'] = (isset($_POST['placa'])) ? $_POST['placa'] : $veiculo['placa'];
 $veiculo['marca'] = (isset($_POST['marca'])) ? $_POST['marca'] : $veiculo['marca'];
