@@ -67,7 +67,7 @@
 
 
         if (! $tem_erros) {
-            editar_contato($mysqli, $contato);
+            $contatos->editar_contato($contato);
             
             header('Location: contatos.php');
             die();

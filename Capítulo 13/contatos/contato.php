@@ -39,7 +39,8 @@ if (tem_post()) {
 
 $contatos->buscar_contato($_GET['id']);
 $contato = $contatos->contato;
-$anexos = buscar_anexos($mysqli, $_GET['id']);
+$contatos->buscar_anexos($_GET['id']);
+$anexos = $contatos->anexos;
 
 
 include "template_contato.php";

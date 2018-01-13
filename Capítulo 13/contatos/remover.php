@@ -2,7 +2,10 @@
 
 include "config.php";
 include "banco.php";
+include "classes/Contatos.php";
 
-remover_contato($mysqli, $_GET['id']);
+$contatos = new Contatos($mysqli);
+
+$contatos->remover_contato($_GET['id']);
 
 header('Location: contatos.php');
