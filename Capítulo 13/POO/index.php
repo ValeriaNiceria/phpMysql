@@ -2,19 +2,21 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Criando uma classe</title>
+    <title>Atributos e Métodos</title>
 </head>
 <body>
     
 <?php
 
-include "Pessoa.php";
+include "Carro.php";
 
-$pessoa = new Pessoa();
+$carro = new carro();
 
-$pessoa->nome = 'Maria';
+$carro->setModelo('Gol');
+$carro->setCor('Verde');
+$carro->setAno('2010');
 
-echo $pessoa->falar();
+var_dump($carro->info());
 
 ?>
     
