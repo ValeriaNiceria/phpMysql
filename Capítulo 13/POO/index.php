@@ -2,22 +2,30 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Métodos Estáticos</title>
+    <title>Métodos Mágicos</title>
 </head>
 <body>
     
 <?php
 
-include "Documento.php";
+include "Endereco.php";
 
-$cpf = new Documento();
-$cpf->setNumero("86471612540");
+//Instanciando a Classe Endereco
+$endereco = new Endereco("Av.Padre Pedro Pinto", "890", "Venda Nova");
 
-var_dump($cpf->getNumero());
+print_r($endereco->exibirEndereco());
 
-/*
-var_dump(Documento::validarCPF("09098776754"));
-*/
+echo "<br>";
+
+//Usando o toString
+echo $endereco;
+
+echo "<br>";
+
+//Destruíndo a variável especificada
+unset($endereco);
+
+echo $endereco; //-- Notice: Undefined variable: endereco 
 
 ?>
     
