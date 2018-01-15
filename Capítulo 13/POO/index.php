@@ -2,21 +2,22 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Atributos e Métodos</title>
+    <title>Métodos Estáticos</title>
 </head>
 <body>
     
 <?php
 
-include "Carro.php";
+include "Documento.php";
 
-$carro = new carro();
+$cpf = new Documento();
+$cpf->setNumero("86471612540");
 
-$carro->setModelo('Gol');
-$carro->setCor('Verde');
-$carro->setAno('2010');
+var_dump($cpf->getNumero());
 
-var_dump($carro->info());
+/*
+var_dump(Documento::validarCPF("09098776754"));
+*/
 
 ?>
     
