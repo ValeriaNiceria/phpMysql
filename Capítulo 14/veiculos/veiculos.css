@@ -1,0 +1,71 @@
+body {
+    font-family: sans-serif;
+    color: #333;
+    background-color: #ece1e1;
+}
+
+.erro {
+    color: #F44;
+}
+
+fieldset {
+    border: 3px double #333;
+    color: #000;
+    margin: 10px 0 0 0;
+}
+
+label {
+    display: block;
+    margin: 10px 0 0 0;
+}
+
+input[type=text],
+textarea {
+    width: 100%;
+    border: 1px solid #333;
+    padding: 3px;
+    border-radius: 5px;
+}
+
+input[type=submit] {
+    float: right;
+    clear: both;
+}
+
+table {
+    width: 40%;
+}
+
+table th {
+    font-size: 18px;
+    text-align: left;
+    background-color: #666ea5;
+    color: rgb(231, 226, 226);
+}
+
+table td {
+    color: #000;
+}
+
+.btn {
+    color: #fff;
+    float: right;
+    text-decoration: none;
+    background-color: #eec0c0;
+    padding: 4px;
+    margin: 3px;
+}
+
+.btn_apagar {
+    color: #fff;
+    float: left;
+    text-decoration: none;
+    background-color: rgb(49, 81, 163);
+    padding: 5px;
+    margin:4px;
+}
+
+.img_table {
+    width: 80px;
+
+}
