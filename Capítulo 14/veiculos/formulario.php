@@ -12,15 +12,15 @@
                 </span>
             <?php endif;?>
 
-            <input type="text" name="placa" value="<?php echo $veiculo['placa']; ?>"/>
+            <input type="text" name="placa" value="<?php echo htmlspecialchars($veiculo['placa']); ?>"/>
         </label>
         <label>
             Marca:
-            <input type="text" name="marca" value="<?php echo $veiculo['marca']; ?>"/>
+            <input type="text" name="marca" value="<?php echo htmlspecialchars($veiculo['marca']); ?>"/>
         </label>
         <label>
             Modelo:
-            <input type="text" name="modelo" value="<?php echo $veiculo['modelo']; ?>"/>
+            <input type="text" name="modelo" value="<?php echo htmlspecialchars($veiculo['modelo']); ?>"/>
         </label>
         <fieldset>
             <legend>Horário:</legend>

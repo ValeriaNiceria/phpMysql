@@ -54,7 +54,7 @@ if (tem_post()) {
     }
 
     if (! $tem_erros) {
-        editar_veiculo($conexao, $veiculo);
+        $veiculos->editar_veiculo($veiculo);
         
         header('Location: veiculos.php');
         die();

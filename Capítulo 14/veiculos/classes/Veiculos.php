@@ -28,14 +28,20 @@ class Veiculos
 
     public function gravar_veiculo($veiculo) 
     {
+
+        $placa = $this->mysqli->escape_string($veiculo['placa']);
+        $marca = $this->mysqli->escape_string($veiculo['marca']);
+        $modelo = $this->mysqli->escape_string($veiculo['modelo']);
+
+
         $sqlGravar = "
             INSERT INTO veiculos 
             (placa, marca, modelo, hora_entrada, hora_saida)
             VALUES
             (
-                '{$veiculo['placa']}',
-                '{$veiculo['marca']}',
-                '{$veiculo['modelo']}',
+                '{$placa}',
+                '{$marca}',
+                '{$modelo}',
                 '{$veiculo['hora_entrada']}',
                 '{$veiculo['hora_saida']}'
             )
@@ -56,16 +62,21 @@ class Veiculos
 
     public function editar_veiculo($veiculo) 
     {
+
+        $placa = $this->mysqli->escape_string($veiculo['placa']);
+        $marca = $this->mysqli->escape_string($veiculo['marca']);
+        $modelo = $this->mysqli->escape_string($veiculo['modelo']);
+
         $sqlEditar = "
             UPDATE veiculos SET
-                placa = '{$veiculo['placa']}',
-                marca = '{$veiculo['marca']}',
-                modelo = '{$veiculo['modelo']}',
+                placa = '{$placa}',
+                marca = '{$marca}',
+                modelo = '{$modelo}',
                 hora_entrada = '{$veiculo['hora_entrada']}',
                 hora_saida = '{$veiculo['hora_saida']}'
             WHERE id = {$veiculo['id']}
         ";
-        $this->mysqli_query($sqlEditar);
+        $this->mysqli->query($sqlEditar);
     }
 
     public function remover_veiculo($id) 
@@ -78,13 +89,17 @@ class Veiculos
 
     public function gravar_anexo($anexo) 
     {
+
+        $nome = $this->mysqli->escape_string($anexo['nome']);
+        $arquivo = $this->mysqli->escape_string($anexo['arquivo']);
+
         $sqlGravar = "
         INSERT INTO anexos
             (veiculo_id, nome, arquivo, tipo)
         VALUES(
             {$anexo['veiculo_id']},
-            '{$anexo['nome']}',
-            '{$anexo['arquivo']}',
+            '{$nome}',
+            '{$arquivo}',
             '{$anexo['tipo']}'
         )
         ";
