@@ -62,12 +62,17 @@ class Tarefas
     
 
     public function editar_tarefa($tarefa) {
+        //Protegendo-se contra SQL Injection
+        $nome = $this->mysqli->escape_string($tarefa['nome']);
+        $descricao = $this->mysqli->escape_string($tarefa['descricao']);
+        $prazo = $this->mysqli->escape_string($tarefa['prazo']);
+
         $sqlEditar = "
             UPDATE tarefas SET
-                nome = '{$tarefa['nome']}',
-                descricao = '{$tarefa['descricao']}',
+                nome = '{$nome}',
+                descricao = '{$descricao}',
                 prioridade = '{$tarefa['prioridade']}',
-                prazo = '{$tarefa['prazo']}',
+                prazo = '{$prazo}',
                 concluida = '{$tarefa['concluida']}'
             WHERE id = {$tarefa['id']}
         ";
@@ -78,13 +83,17 @@ class Tarefas
 
     public function gravar_anexo($anexo)
     {
+
+        $nome = $this->mysqli->escape_string($anexo['nome']);
+        $arquivo = $this->mysqli->escape_string($anexo['arquivo']);
+
         $sqlGravar = "
             INSERT INTO anexos
             (tarefa_id, nome, arquivo)
             VALUES(
                 '{$anexo['tarefa_id']}',
-                '{$anexo['nome']}',
-                '{$anexo['arquivo']}'
+                '{$nome}',
+                '{$arquivo}'
             )
         ";
     
