@@ -13,7 +13,7 @@
                 </span>
             <?php endif; ?>
 
-            <input type="text" name="nome" value="<?php echo $contato['nome']; ?>"/>
+            <input type="text" name="nome" value="<?php echo htmlspecialchars($contato['nome']); ?>"/>
         </label>
         <label>
             Telefone:
@@ -24,16 +24,16 @@
                 </span>
             <?php endif; ?>
 
-            <input type="text" name="telefone" value="<?php echo $contato['telefone']; ?>"/> 
+            <input type="text" name="telefone" value="<?php echo htmlspecialchars($contato['telefone']); ?>"/> 
         </label>
         <label>
             Email (Opcional):
-            <input type="text" name="email" value="<?php echo $contato['email']; ?>"/>
+            <input type="text" name="email" value="<?php echo htmlspecialchars($contato['email']); ?>"/>
         </label>
         <label>
             Descrição (Opcional):
             <textarea name="descricao">
-                <?php echo $contato['descricao']; ?>
+                <?php echo htmlspecialchars($contato['descricao']); ?>
             </textarea>
         </label>
         <label>

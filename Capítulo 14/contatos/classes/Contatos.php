@@ -36,15 +36,22 @@ class Contatos
 
     public function gravar_contato($contato) 
     {
+        //Protegendo-se contra o SQL Injection
+        $nome = $this->mysqli->escape_string($contato['nome']);
+        $telefone = $this->mysqli->escape_string($contato['telefone']);
+        $email= $this->mysqli->escape_string($contato['email']);
+        $descricao = $this->mysqli->escape_string($contato['descricao']);
+        $dataNascimento = $this->mysqli->escape_string($contato['dataNascimento']);
+
         $sqlGravar = "
             INSERT INTO contatos
             (nome, telefone, email, descricao, dataNascimento, favorito)
             VALUES(
-            '{$contato['nome']}',
-            '{$contato['telefone']}',
-            '{$contato['email']}',
-            '{$contato['descricao']}',
-            '{$contato['dataNascimento']}',
+            '{$nome}',
+            '{$telefone}',
+            '{$email}',
+            '{$descricao}',
+            '{$dataNascimento}',
             '{$contato['favorito']}'
             )
 
@@ -55,13 +62,16 @@ class Contatos
 
     public function gravar_anexo($anexo) 
     {
+        $nome = $this->mysqli->escape_string($anexo['nome']);
+        $arquivo = $this->mysqli->escape_string($anexo['arquivo']);
+
         $sqlGravar = "
             INSERT INTO anexo
             (contato_id, nome, arquivo)
             VALUES(
                 {$anexo['contato_id']},
-                '{$anexo['nome']}',
-                '{$anexo['arquivo']}'
+                '{$nome}',
+                '{$arquivo}'
             )
         ";
         $this->mysqli->query($sqlGravar);
@@ -70,13 +80,20 @@ class Contatos
 
     public function editar_contato($contato) 
     {
+
+        $nome = $this->mysqli->escape_string($contato['nome']);
+        $telefone = $this->mysqli->escape_string($contato['telefone']);
+        $email= $this->mysqli->escape_string($contato['email']);
+        $descricao = $this->mysqli->escape_string($contato['descricao']);
+        $dataNascimento = $this->mysqli->escape_string($contato['dataNascimento']);
+
         $sqlEditar = " 
             UPDATE contatos SET
-                nome = '{$contato['nome']}',
-                telefone = '{$contato['telefone']}',
-                email = '{$contato['email']}',
-                descricao = '{$contato['descricao']}',
-                dataNascimento = '{$contato['dataNascimento']}',
+                nome = '{$nome}',
+                telefone = '{$telefone}',
+                email = '{$email}',
+                descricao = '{$descricao}',
+                dataNascimento = '{$dataNascimento}',
                 favorito = '{$contato['favorito']}'
             WHERE id = {$contato['id']}
         ";
