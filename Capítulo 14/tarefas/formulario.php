@@ -14,7 +14,8 @@
                 </span>
             <?php endif;?>
 
-            <input type="text" name="nome" value="<?php echo $tarefa['nome']; ?>" />            
+            <!--Exibindo campo com aspas-->
+            <input type="text" name="nome" value="<?php echo htmlspecialchars($tarefa['nome']); ?>" />         
         </label>
 
         <label>

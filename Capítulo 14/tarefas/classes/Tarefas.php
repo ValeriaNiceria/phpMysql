@@ -39,17 +39,21 @@ class Tarefas
         $this->tarefa = mysqli_fetch_assoc($resultado);
     }
 
-
+    //Protegendo-se contra SQL Injection
     public function gravar_tarefa($tarefa) 
     {
+        $nome = $this->mysqli->escape_string($tarefa['nome']);
+        $descricao = $this->mysqli->escape_string($tarefa['descricao']);
+        $prazo = $this->mysqli->escape_string($tarefa['prazo']);
+
         $sqlGravar = "
             INSERT INTO tarefas (nome, descricao, prioridade, prazo, concluida)
             VALUES
             (   
-                '{$tarefa['nome']}',
-                '{$tarefa['descricao']}',
+                '{$nome}',
+                '{$descricao}',
                 '{$tarefa['prioridade']}',
-                '{$tarefa['prazo']}',
+                '{$prazo}',
                 '{$tarefa['concluida']}'
             )
         ";
@@ -102,11 +106,9 @@ class Tarefas
 
     public function remover_tarefa($id) 
     {
-        $sqlRemover = "
-            DELETE FROM tarefas WHERE id = {$id};
-        ";
+        $sqlRemover = "DELETE FROM tarefas WHERE id = {$id};";
         
-        $mysqli->query($sqlRemover);
+        $this->mysqli->query($sqlRemover);
         
     }        
     
@@ -114,7 +116,7 @@ class Tarefas
     public function apagar_concluida() {
         $sqlApaga = "DELETE FROM tarefas WHERE concluida = 1";
     
-        $mysqli->query($sqlApaga);
+        $this->mysqli->query($sqlApaga);
     }
 
 }
